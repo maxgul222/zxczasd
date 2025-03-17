@@ -50,4 +50,18 @@ static/
 .env.local
 .env.development.local
 .env.test.local
+.env.production.local
+
+# Dependencies
+node_modules/
+
+# Production build
+build/
+dist/
+
+# Misc
+.DS_Store
+.env.local
+.env.development.local
+.env.test.local
 .env.production.local 

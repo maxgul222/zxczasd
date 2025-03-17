@@ -1,0 +1,297 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Casino Game</title>
+    <link rel="stylesheet" href="css/style.css">
+    <script src="https://telegram.org/js/telegram-web-app.js"></script>
+</head>
+<body>
+    <!-- Верхняя панель -->
+    <div class="top-bar">
+        <button class="menu-btn" onclick="toggleMenu()">
+            <span></span>
+            <span></span>
+            <span></span>
+        </button>
+        <div class="logo"></div>
+        <div class="user-balance">
+            <div class="balance-amount">10,000 ₽</div>
+        </div>
+    </div>
+
+    <!-- Боковое меню с соц. ссылками -->
+    <div id="sideMenu" class="side-menu">
+        <div class="menu-header">
+            <div class="user-info">
+                <div id="menuProfilePhoto" class="menu-profile-photo"></div>
+                <span class="username" id="username">User</span>
+            </div>
+        </div>
+        <div class="menu-items">
+            <a href="https://t.me/your_channel" class="menu-item">
+                <i class="menu-icon channel-icon"></i>
+                Канал
+            </a>
+            <a href="https://t.me/your_chat" class="menu-item">
+                <i class="menu-icon chat-icon"></i>
+                Чат
+            </a>
+            <a href="https://t.me/your_support" class="menu-item">
+                <i class="menu-icon support-icon"></i>
+                Тех. поддержка
+            </a>
+        </div>
+    </div>
+    <div id="overlay" class="overlay" onclick="toggleMenu()"></div>
+
+    <!-- Основной контент -->
+    <div class="main-container">
+        <!-- Вкладки игр -->
+        <div class="game-tabs">
+            <button class="tab-btn active" data-game="double">DOUBLE</button>
+            <button class="tab-btn" data-game="crash">CRASH</button>
+            <button class="tab-btn" data-game="dice">DICE</button>
+            <button class="tab-btn" data-game="mines">MINES</button>
+        </div>
+
+        <!-- Контент игр -->
+        <div class="game-content">
+            <!-- DOUBLE (активная по умолчанию) -->
+            <div class="game-tab active" id="double">
+                <div class="timer">30</div>
+                <div class="roulette-container">
+                    <div class="roulette-wheel">
+                        <div class="roulette-pointer"></div>
+                        <div class="roulette-items">
+                            <!-- Первый набор чисел -->
+                            <div class="roulette-item red">
+                                <span>1</span>
+                                <div class="item-glow"></div>
+                            </div>
+                            <div class="roulette-item black">
+                                <span>8</span>
+                                <div class="item-glow"></div>
+                            </div>
+                            <div class="roulette-item red">
+                                <span>2</span>
+                                <div class="item-glow"></div>
+                            </div>
+                            <div class="roulette-item black">
+                                <span>9</span>
+                                <div class="item-glow"></div>
+                            </div>
+                            <div class="roulette-item red">
+                                <span>3</span>
+                                <div class="item-glow"></div>
+                            </div>
+                            <div class="roulette-item black">
+                                <span>10</span>
+                                <div class="item-glow"></div>
+                            </div>
+                            <div class="roulette-item red">
+                                <span>4</span>
+                                <div class="item-glow"></div>
+                            </div>
+                            <div class="roulette-item black">
+                                <span>11</span>
+                                <div class="item-glow"></div>
+                            </div>
+                            <div class="roulette-item red">
+                                <span>5</span>
+                                <div class="item-glow"></div>
+                            </div>
+                            <div class="roulette-item black">
+                                <span>12</span>
+                                <div class="item-glow"></div>
+                            </div>
+                            <div class="roulette-item red">
+                                <span>6</span>
+                                <div class="item-glow"></div>
+                            </div>
+                            <div class="roulette-item black">
+                                <span>13</span>
+                                <div class="item-glow"></div>
+                            </div>
+                            <div class="roulette-item red">
+                                <span>7</span>
+                                <div class="item-glow"></div>
+                            </div>
+                            <div class="roulette-item green">
+                                <span>14</span>
+                                <div class="item-glow"></div>
+                            </div>
+                            <!-- Повторяем для плавной анимации -->
+                            <div class="roulette-item red">
+                                <span>1</span>
+                                <div class="item-glow"></div>
+                            </div>
+                            <div class="roulette-item black">
+                                <span>8</span>
+                                <div class="item-glow"></div>
+                            </div>
+                            <div class="roulette-item red">
+                                <span>2</span>
+                                <div class="item-glow"></div>
+                            </div>
+                            <div class="roulette-item black">
+                                <span>9</span>
+                                <div class="item-glow"></div>
+                            </div>
+                            <div class="roulette-item red">
+                                <span>3</span>
+                                <div class="item-glow"></div>
+                            </div>
+                            <div class="roulette-item black">
+                                <span>10</span>
+                                <div class="item-glow"></div>
+                            </div>
+                            <div class="roulette-item red">
+                                <span>4</span>
+                                <div class="item-glow"></div>
+                            </div>
+                            <div class="roulette-item black">
+                                <span>11</span>
+                                <div class="item-glow"></div>
+                            </div>
+                            <div class="roulette-item red">
+                                <span>5</span>
+                                <div class="item-glow"></div>
+                            </div>
+                            <div class="roulette-item black">
+                                <span>12</span>
+                                <div class="item-glow"></div>
+                            </div>
+                            <div class="roulette-item red">
+                                <span>6</span>
+                                <div class="item-glow"></div>
+                            </div>
+                            <div class="roulette-item black">
+                                <span>13</span>
+                                <div class="item-glow"></div>
+                            </div>
+                            <div class="roulette-item red">
+                                <span>7</span>
+                                <div class="item-glow"></div>
+                            </div>
+                            <div class="roulette-item green">
+                                <span>14</span>
+                                <div class="item-glow"></div>
+                            </div>
+                        </div>
+                        <div class="roulette-glow"></div>
+                        <div class="roulette-pointer-container">
+                            <div class="pointer-light"></div>
+                        </div>
+                        <div class="roulette-side-glow left"></div>
+                        <div class="roulette-side-glow right"></div>
+                    </div>
+                    <div class="history-container">
+                        <!-- История результатов будет добавляться здесь -->
+                    </div>
+                    <div class="roulette-decorations">
+                        <div class="decoration-dot top-left"></div>
+                        <div class="decoration-dot top-right"></div>
+                        <div class="decoration-dot bottom-left"></div>
+                        <div class="decoration-dot bottom-right"></div>
+                        <div class="decoration-line top"></div>
+                        <div class="decoration-line bottom"></div>
+                    </div>
+                </div>
+                <div class="betting-interface">
+                    <div class="bet-input-container">
+                        <input type="number" class="bet-input" placeholder="ВВЕДИТЕ СТАВКУ" min="1" max="999999">
+                    </div>
+                    <div class="quick-bet-buttons">
+                        <button class="quick-bet-btn clear">Очистить</button>
+                        <button class="quick-bet-btn">+1</button>
+                        <button class="quick-bet-btn">+10</button>
+                        <button class="quick-bet-btn">+100</button>
+                        <button class="quick-bet-btn">+1000</button>
+                        <button class="quick-bet-btn">x2</button>
+                        <button class="quick-bet-btn">1/2</button>
+                        <button class="quick-bet-btn">Max</button>
+                    </div>
+                    <div class="bet-buttons">
+                        <button class="bet-btn red">
+                            <span>RED x2</span>
+                        </button>
+                        <button class="bet-btn green">
+                            <span>GREEN x14</span>
+                        </button>
+                        <button class="bet-btn black">
+                            <span>BLACK x2</span>
+                        </button>
+                    </div>
+                    
+                    <!-- Контейнер для ставок -->
+                    <div class="bets-container">
+                        <!-- Красная колонка -->
+                        <div class="bets-column red">
+                            <div class="bets-header">
+                                <div class="header-info">
+                                    <span class="color-name">Красное</span>
+                                    <span class="players-count">0 игроков</span>
+                                </div>
+                                <span class="total-amount" data-length="1">0</span>
+                            </div>
+                            <div class="bets-list">
+                                <div class="bet-item empty">
+                                    Нет ставок
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <!-- Зеленая колонка -->
+                        <div class="bets-column green">
+                            <div class="bets-header">
+                                <div class="header-info">
+                                    <span class="color-name">Зеленое</span>
+                                    <span class="players-count">0 игроков</span>
+                                </div>
+                                <span class="total-amount" data-length="1">0</span>
+                            </div>
+                            <div class="bets-list">
+                                <div class="bet-item empty">
+                                    Нет ставок
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <!-- Черная колонка -->
+                        <div class="bets-column black">
+                            <div class="bets-header">
+                                <div class="header-info">
+                                    <span class="color-name">Черное</span>
+                                    <span class="players-count">0 игроков</span>
+                                </div>
+                                <span class="total-amount" data-length="1">0</span>
+                            </div>
+                            <div class="bets-list">
+                                <div class="bet-item empty">
+                                    Нет ставок
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div id="history" class="history-container"></div>
+            </div>
+
+            <!-- Заглушки для других игр -->
+            <div class="game-tab" id="crash" style="display: none;">
+                <div class="coming-soon">CRASH - Скоро будет доступно</div>
+            </div>
+            <div class="game-tab" id="dice" style="display: none;">
+                <div class="coming-soon">DICE - Скоро будет доступно</div>
+            </div>
+            <div class="game-tab" id="mines" style="display: none;">
+                <div class="coming-soon">MINES - Скоро будет доступно</div>
+            </div>
+        </div>
+    </div>
+
+    <script src="js/script.js"></script>
+</body>
+</html> 
